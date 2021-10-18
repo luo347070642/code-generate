@@ -8,7 +8,6 @@ export function createRouterGuards(router) {
   router.beforeEach((to, from, next) => {
     NProgress.start() // start progress bar
     const token = localStorage.getItem('token')
-    console.log('token', token)
     if (token) {
       if (to.path === '/login') {
         next(from)
@@ -28,12 +27,12 @@ export function createRouterGuards(router) {
 
   router.afterEach((to, from, failure) => {
     if (isNavigationFailure(failure)) {
-      console.log('failed navigation', failure)
+      console.warn('failed navigation', failure)
     }
     NProgress.done() // finish progress bar
   })
 
   router.onError(error => {
-    console.log(error, '路由错误')
+    console.error(error, '路由错误')
   })
 }

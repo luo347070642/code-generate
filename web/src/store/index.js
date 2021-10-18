@@ -20,7 +20,6 @@ const store = createStore({
 
 export function setupStore(app) {
   app.use(store, key)
-  console.log(store, 'vuex')
 }
 
 export default store

@@ -16,7 +16,6 @@ export default defineComponent({
   setup() {
     const router = useRouter()
     const route = useRoute()
-    console.log('route', route)
     const goHome = () => {
       router.push({ name: 'index' })
     }

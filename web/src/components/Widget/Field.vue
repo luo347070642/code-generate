@@ -44,7 +44,7 @@
 </template>
 
 <script>
-import { defineComponent, ref, watchEffect } from 'vue'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
@@ -54,18 +54,10 @@ export default defineComponent({
   },
   emits: ['showDrawer'],
   setup(props, { emit }) {
-    // const fieldModel = ref(props.opt.defaultValue)
-    // const fieldName = ref(props.opt.fieldName)
-    // watchEffect(() => {
-    //   fieldModel.value = props.opt.defaultValue
-    //   fieldName.value = props.opt.fieldName
-    // })
     const showDrawer = () => {
       emit('showDrawer', props.index)
     }
     return {
-      // fieldName,
-      // fieldModel,
       showDrawer
     }
   }

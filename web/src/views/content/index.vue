@@ -28,78 +28,7 @@
             :width="370"
             :wrap-style="{ position: 'absolute' }"
             @close="onClose">
-    <div>
-      <a-row class="mb-2">
-        <a-col :span="6"
-               class="pr-2 text-right"><span>字段名：</span></a-col>
-        <a-col :span="18">
-          <a-input class="w-220px"
-                   allowClear
-                   v-model:value="data.list[data.index].options.fieldName"></a-input>
-        </a-col>
-      </a-row>
-      <a-row class="mb-2">
-        <a-col :span="6"
-               class="pr-2 text-right"><span>默认值：</span></a-col>
-        <a-col :span="18">
-          <a-input class="w-220px"
-                   allowClear
-                   v-model:value="data.list[data.index].options.defaultValue"></a-input>
-        </a-col>
-      </a-row>
-      <a-row class="mb-2">
-        <a-col :span="6"
-               class="pr-2 text-right"><span>占位内容：</span></a-col>
-        <a-col :span="18">
-          <a-input class="w-220px"
-                   allowClear
-                   v-model:value="data.list[data.index].options.placeholder"></a-input>
-        </a-col>
-      </a-row>
-      <a-row class="mb-2">
-        <a-col :span="6"
-               class="pr-2 text-right"><span>文本类型：</span></a-col>
-        <a-col :span="18">
-          <a-select class="w-full"
-                    allowClear
-                    v-model:value="data.list[data.index].options.type"
-                    :options="[
-            { label: 'text', value: 'text' },
-            { label: 'password', value: 'password' }
-          ]">
-          </a-select>
-        </a-col>
-      </a-row>
-      <a-row class="mb-2">
-        <a-col :span="6"
-               class="pr-2 text-right"><span>控件大小：</span></a-col>
-        <a-col :span="18">
-          <a-select class="w-full"
-                    allowClear
-                    v-model:value="data.list[data.index].options.size"
-                    :options="[
-            { label: 'default', value: 'default' },
-            { label: 'large', value: 'large' },
-            { label: 'small', value: 'small' }
-          ]">
-          </a-select>
-        </a-col>
-      </a-row>
-      <a-row class="mb-2">
-        <a-col :span="6"
-               class="pr-2 text-right"><span>禁用：</span></a-col>
-        <a-col :span="18">
-          <a-checkbox v-model:checked="data.list[data.index].options.disabled"></a-checkbox>
-        </a-col>
-      </a-row>
-      <a-row class="mb-2">
-        <a-col :span="6"
-               class="pr-2 text-right"><span>可清除：</span></a-col>
-        <a-col :span="18">
-          <a-checkbox v-model:checked="data.list[data.index].options.allowClear"></a-checkbox>
-        </a-col>
-      </a-row>
-    </div>
+    <PropsOption :options="data.list[data.index].options" />
   </a-drawer>
 </template>
 
@@ -107,17 +36,19 @@
 import { defineComponent, reactive } from 'vue'
 import draggable from 'vuedraggable'
 import FieldWidget from '@/components/Widget/Field.vue'
+import PropsOption from '@/views/content/propsOption.vue'
 
 export default defineComponent({
-  components: { draggable, FieldWidget },
+  components: { draggable, FieldWidget, PropsOption },
   setup() {
     const data = reactive({
       list: [],
-      item: {},
       visible: false,
       index: 0
     })
-    const showCode = () => {}
+    const showCode = () => {
+      console.log(data.list)
+    }
 
     const onClose = () => {
       data.visible = false
@@ -126,7 +57,6 @@ export default defineComponent({
     const showDrawer = (index) => {
       data.visible = true
       data.index = index
-      data.item = { ...data?.list[index]?.options }
     }
     return {
       data,
