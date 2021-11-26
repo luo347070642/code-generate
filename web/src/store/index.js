@@ -1,7 +1,6 @@
 import { createStore, createLogger } from 'vuex'
 import modules from '@/store/modules'
 
-export const key = Symbol()
 const plugins = import.meta.env.DEV
   ? [
       createLogger({
@@ -19,7 +18,7 @@ const store = createStore({
 })
 
 export function setupStore(app) {
-  app.use(store, key)
+  app.use(store)
 }
 
 export default store

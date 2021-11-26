@@ -2,11 +2,20 @@
   <div>
     <a-row class="mb-2">
       <a-col :span="6"
+             class="pr-2 text-right"><span>字段id：</span></a-col>
+      <a-col :span="18">
+        <a-input class="w-220px"
+                 allowClear
+                 v-model:value="opts.value"></a-input>
+      </a-col>
+    </a-row>
+    <a-row class="mb-2">
+      <a-col :span="6"
              class="pr-2 text-right"><span>字段名：</span></a-col>
       <a-col :span="18">
         <a-input class="w-220px"
                  allowClear
-                 v-model:value="options.fieldName"></a-input>
+                 v-model:value="opts.fieldName"></a-input>
       </a-col>
     </a-row>
     <a-row class="mb-2">
@@ -15,7 +24,7 @@
       <a-col :span="18">
         <a-input class="w-220px"
                  allowClear
-                 v-model:value="options.defaultValue"></a-input>
+                 v-model:value="opts.defaultValue"></a-input>
       </a-col>
     </a-row>
     <a-row class="mb-2">
@@ -24,7 +33,7 @@
       <a-col :span="18">
         <a-input class="w-220px"
                  allowClear
-                 v-model:value="options.placeholder"></a-input>
+                 v-model:value="opts.placeholder"></a-input>
       </a-col>
     </a-row>
     <a-row class="mb-2">
@@ -33,7 +42,7 @@
       <a-col :span="18">
         <a-select class="w-full"
                   allowClear
-                  v-model:value="options.type"
+                  v-model:value="opts.type"
                   :options="[
             { label: 'text', value: 'text' },
             { label: 'password', value: 'password' }
@@ -47,7 +56,7 @@
       <a-col :span="18">
         <a-select class="w-full"
                   allowClear
-                  v-model:value="options.size"
+                  v-model:value="opts.size"
                   :options="[
             { label: 'default', value: 'default' },
             { label: 'large', value: 'large' },
@@ -60,14 +69,14 @@
       <a-col :span="6"
              class="pr-2 text-right"><span>禁用：</span></a-col>
       <a-col :span="18">
-        <a-checkbox v-model:checked="options.disabled"></a-checkbox>
+        <a-checkbox v-model:checked="opts.disabled"></a-checkbox>
       </a-col>
     </a-row>
     <a-row class="mb-2">
       <a-col :span="6"
              class="pr-2 text-right"><span>可清除：</span></a-col>
       <a-col :span="18">
-        <a-checkbox v-model:checked="options.allowClear"></a-checkbox>
+        <a-checkbox v-model:checked="opts.allowClear"></a-checkbox>
       </a-col>
     </a-row>
   </div>
@@ -75,10 +84,21 @@
 
 <script>
 import { defineComponent } from '@vue/runtime-core'
+import { reactive, watch } from 'vue'
 
 export default defineComponent({
   props: {
     options: Object
+  },
+  emits: ['changeOption'],
+  setup (props, {emit}) {
+    const opts = reactive({ ...props.options })
+    watch(()=>({...opts}), (opts, prevOpts)=>{
+      emit('changeOption', opts)
+    })
+    return {
+      opts
+    }
   }
 })
 </script>

@@ -22,8 +22,8 @@ export default [
         icon: '',
         options: {
           type: 'text',
-          fieldName: 'input1',
-          value: 'input1',
+          fieldName: 'input',
+          value: null,
           size: 'default',
           defaultValue: '',
           placeholder: '',
@@ -40,8 +40,8 @@ export default [
         tempType: 'Number',
         icon: '',
         options: {
-          value: 'number1',
-          fieldName: 'number1',
+          value: null,
+          fieldName: 'number',
           size: 'default',
           defaultValue: '',
           placeholder: '',
@@ -57,8 +57,8 @@ export default [
         tempType: 'Radio',
         icon: '',
         options: {
-          value: 'radio1',
-          fieldName: 'radio1',
+          value: null,
+          fieldName: 'radio',
           size: 'default',
           defaultValue: '',
           name: 'radio1',
@@ -76,8 +76,8 @@ export default [
         tempType: 'Select',
         icon: '',
         options: {
-          value: 'select1',
-          fieldName: 'select1',
+          value: null,
+          fieldName: 'select',
           name: 'select1',
           disabled: false,
           style: 'width: 220px',
@@ -93,9 +93,9 @@ export default [
         tempType: 'Check',
         icon: '',
         options: {
-          value: 'check1',
-          fieldName: 'check1',
-          name: 'check1',
+          value: null,
+          fieldName: 'check',
+          name: 'check',
           disabled: false,
           options: [
             { label: 'Apple', value: 'Apple' },
