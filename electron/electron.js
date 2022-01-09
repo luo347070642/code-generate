@@ -9,7 +9,7 @@ function createWindow() {
       nodeIntegration: true
     }
   })
-  mainWindow.loadURL(`http://editor.chenyuxing.top/editor`)
+  mainWindow.loadURL(`https://www.baidu.com`)
   // mainWindow.loadURL(`file://${path.join(__dirname, '../dist/index.html')}`)
   mainWindow.removeMenu()
 }

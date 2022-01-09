@@ -26,7 +26,7 @@
             :visible="data.visible"
             :get-container="false"
             :width="370"
-            :wrap-style="{ position: 'absolute' }"
+            :style="{ position: 'absolute' }"
             @close="onClose">
     <PropsOption :options="data.list[data.index].options" />
   </a-drawer>
