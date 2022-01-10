@@ -1,1 +1,1 @@
-export { setupAntd } from './antd'
+// export { setupAntd } from './antd'

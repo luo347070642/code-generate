@@ -7,7 +7,7 @@ NProgress.configure({ showSpinner: false })
 export function createRouterGuards(router) {
   router.beforeEach((to, from, next) => {
     NProgress.start() // start progress bar
-    const token = localStorage.getItem('token') || true
+    const token = localStorage.getItem('token')
     if (token) {
       if (to.path === '/login') {
         next(from)
