@@ -19,7 +19,7 @@ const store = createStore({
 })
 
 export function setupStore(app) {
-  app.use(store, key)
+  app.use(store)
 }
 
 export default store

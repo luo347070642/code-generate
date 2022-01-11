@@ -9,16 +9,16 @@
              :size="opt.size"
              :disabled="opt.disabled"
              :allowClear="opt.allowClear"
-             v-model:value="opt.defaultValue" />
+             v-model:value="modelStr" />
     <a-input-number v-if="fieldType === 'Number'"
                     :placeholder="opt.placeholder"
                     :size="opt.size"
                     :disabled="opt.disabled"
                     :allowClear="opt.allowClear"
                     :style="opt.style"
-                    v-model:value="opt.defaultValue" />
+                    v-model:value="modelStr" />
     <a-select v-if="fieldType === 'Select'"
-              v-model:value="opt.defaultValue"
+              v-model:value="modelStr"
               :placeholder="opt.placeholder"
               :size="opt.size"
               :disabled="opt.disabled"
@@ -28,14 +28,14 @@
               :options="opt.options">
     </a-select>
     <a-radio-group v-if="fieldType === 'Radio'"
-                   v-model:value="opt.defaultValue"
+                   v-model:value="modelStr"
                    :size="opt.size"
                    :disabled="opt.disabled"
                    :buttonStyle="opt.buttonStyle"
                    :options="opt.options"
                    :name="opt.name" />
     <a-checkbox-group v-if="fieldType === 'Check'"
-                      v-model:value="opt.defaultValue"
+                      v-model:value="modelStr"
                       :size="opt.size"
                       :disabled="opt.disabled"
                       :name="opt.name"
@@ -50,7 +50,8 @@ export default defineComponent({
   props: {
     opt: Object,
     fieldType: String,
-    index: Number
+    index: Number,
+    modelStr: String
   },
   emits: ['showDrawer'],
   setup(props, { emit }) {

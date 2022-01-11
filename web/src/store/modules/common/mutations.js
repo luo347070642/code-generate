@@ -1,1 +1,5 @@
-export const mutations = {}
+export const mutations = {
+  setData (state, payload) {
+    state.data = payload
+  }
+}
